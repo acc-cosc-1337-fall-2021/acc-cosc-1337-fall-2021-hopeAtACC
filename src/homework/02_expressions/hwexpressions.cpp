@@ -1,5 +1,4 @@
 #include "hwexpressions.h"
-#include <iostream>
 
 //write function code here
 double get_sales_tax(double meal_amount)
