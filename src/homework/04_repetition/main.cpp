@@ -1,16 +1,42 @@
 //write include statements
-
+#include "dna.h"
 //write using statements
+using std::cout; using std::cin; using std::endl;
 
-
-/*
-Write code that prompts user to enter 1 for Get GC Content, 
-or 2 for Get DNA Complement.  The program will prompt user for a 
-DNA string and call either get gc content or get dna complement
-function and display the result. Program runs as long as 
-user enters a y or Y.
-*/
 int main() 
 {
+	int choice, factorialize, num1, num2;
+
+	do
+	{
+		cout << endl << "Choose one of the calculations to perform: \n"
+			 <<	"1 - Factorial \n"
+			 <<	"2 - Greatest Common Divisor \n"
+			 <<	"3 - Exit \n" << endl;
+		cin >> choice;
+
+		if (choice == 1) 
+		{
+			cout << endl << "Please type an integer you would like to factorialize: ";
+			cin >> factorialize;
+			cout << "The factorial of " << factorialize << " is " << factorial(factorialize) << endl;
+		}
+		else if (choice == 2)
+		{
+			cout << endl <<  "Please type the first integer to find a common divisor of: ";
+			cin >> num1;
+			cout << "Please type the second integer: ";
+			cin >> num2;
+			cout << "The common divisor of " << num1 << " and " << num2 << " is: " << gcd(num1, num2) << endl;
+		}
+		else if (choice == 3)
+		{
+			exit(0);
+		}
+	}
+
+	while (choice != 3);
+
 	return 0;
+
 }
