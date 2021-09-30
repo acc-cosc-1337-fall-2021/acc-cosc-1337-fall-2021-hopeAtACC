@@ -4,15 +4,15 @@
 //factorial function
 int factorial (int num)
 {   
-    int product = 1;
+    int sum = 1;
  
     while (num > 0)
     {
-        product = product * num;
+        sum = sum * num;
         num--;
     };
 
-    return product;
+    return sum;
 };
 
 
