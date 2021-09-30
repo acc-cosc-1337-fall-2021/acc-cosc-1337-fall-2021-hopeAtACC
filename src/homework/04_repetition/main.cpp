@@ -17,9 +17,9 @@ int main()
 
 		if (choice == 1) 
 		{
-			cout << endl << "Please type an integer you would like to factorialize: ";
+			cout << endl << "Please type an integer greater than or equal to zero that you would like to factorialize: ";
 			cin >> factorialize;
-			cout << "The factorial of " << factorialize << " is " << factorial(factorialize) << endl;
+			cout << endl << "The factorial of " << factorialize << " is " << factorial(factorialize) << endl;
 		}
 		else if (choice == 2)
 		{
@@ -27,7 +27,7 @@ int main()
 			cin >> num1;
 			cout << "Please type the second integer: ";
 			cin >> num2;
-			cout << "The common divisor of " << num1 << " and " << num2 << " is: " << gcd(num1, num2) << endl;
+			cout << endl << "The common divisor of " << num1 << " and " << num2 << " is: " << gcd(num1, num2) << endl;
 		}
 		else if (choice == 3)
 		{
