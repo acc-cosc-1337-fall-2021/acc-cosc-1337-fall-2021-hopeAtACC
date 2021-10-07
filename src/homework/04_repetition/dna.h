@@ -1,5 +1,7 @@
 //add include statements
+#include <iostream>
 
-/*
-Write prototype for function(s)
-*/
+//factorial prototype function
+int factorial (int num);
+//greatest common denominator prototype function
+int gcd (int num1, int num2);
