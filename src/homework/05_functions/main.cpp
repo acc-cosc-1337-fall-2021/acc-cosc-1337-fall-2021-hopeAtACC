@@ -7,6 +7,7 @@ int main()
 {	
 	int choice;
 	string dna;
+	string confirmation;
 
 	do
 	{
@@ -30,7 +31,16 @@ int main()
 		}
 		else if (choice == 3)
 		{
-			exit(0);
+			cout << "Are you sure you want to quit?  Type \"Y\" to confirm or \"N\" to cancel. ";
+			cin >> confirmation;
+			if (confirmation == "Y" || confirmation == "y")
+			{
+				exit(0);
+			}
+		}
+		else
+		{
+			cout << "That was not a valid menu choice. ";
 		}
 	}
 
