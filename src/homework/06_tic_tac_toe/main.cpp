@@ -49,6 +49,7 @@ int main()
 		}
 		//clears out array for the next round by filling it with zeroes again
 		std::fill( std::begin(pegChecker), std::end(pegChecker), 0 );
+		
 		if (game.get_winner() == "X" || game.get_winner() == "O") {
 			cout << "Congratulations, " << game.get_winner() << ", you won!" << endl;
 		}
