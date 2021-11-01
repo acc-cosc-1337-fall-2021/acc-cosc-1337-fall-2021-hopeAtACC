@@ -40,6 +40,7 @@ int main()
 			}
 		
 			game.mark_board(position);
+
 			//change index position - 1 from a zero to a one in pegChecker array
 			pegChecker[position - 1] = 1;
 			
@@ -48,6 +49,13 @@ int main()
 		}
 		//clears out array for the next round by filling it with zeroes again
 		std::fill( std::begin(pegChecker), std::end(pegChecker), 0 );
+		
+		if (game.get_winner() == "X" || game.get_winner() == "O") {
+			cout << "Congratulations, " << game.get_winner() << ", you won!" << endl;
+		}
+		else {
+			cout << "It's a tie!" << endl;
+		}
 
 		cout << "Would you like to play again? ";
 		cin >> choice;
