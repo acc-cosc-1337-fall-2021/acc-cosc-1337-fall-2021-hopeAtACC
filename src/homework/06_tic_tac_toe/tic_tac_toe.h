@@ -1,8 +1,11 @@
+#ifndef tic_tac_toe.h
+#define tic_tac_toe.h
+
 #include <iostream>
 #include <string>
 #include <vector>
 
-using std::string; using std::vector;
+using std::string; using std::vector; using std::ostream; using std::istream;
 
 class Tic_tac_toe {
     //private attributes
@@ -31,11 +34,14 @@ class Tic_tac_toe {
             return player;
         }
         void mark_board(int position);
-        void display_board() const;
         bool game_over();
         string get_winner()
         {
             return winner;
         }
 
+        friend ostream& operator<<(ostream& out, Tic_tac_toe& game);
+        friend istream& operator>>(istream& cin, Tic_tac_toe& game);
 };
+
+#endif
