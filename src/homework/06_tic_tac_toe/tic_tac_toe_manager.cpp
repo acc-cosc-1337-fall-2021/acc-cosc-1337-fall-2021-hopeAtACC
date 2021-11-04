@@ -8,7 +8,11 @@ void Tic_tac_toe_manager::save_game(Tic_tac_toe obj) {
 };
 
 
-void Tic_tac_toe_manager::get_winner_total(int& o, int& w, int& t) {
+void Tic_tac_toe_manager::get_winner_total(int& o, int& x, int& t) {
+
+    o = o_win;
+    x = x_win;
+    t = ties;
 
 };
 
@@ -26,6 +30,12 @@ void Tic_tac_toe_manager::update_winner_count(string winner) {
 
 ostream& operator<<(std::ostream& out, const Tic_tac_toe_manager& manager) {
 
-//Overload <<-Loop through vector of TicTacToe and call the TicTacToe cout overload.    
+    //Overload <<-Loop through vector of TicTacToe and call the TicTacToe cout overload.
+    for (auto& game : manager.games) {
+        
+        out << game;
+    }
+
+    return out;
 
 };
