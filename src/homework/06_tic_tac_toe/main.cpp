@@ -9,9 +9,10 @@ int main()
 	Tic_tac_toe_manager manager;
 
 	string first_player;
-	int pegChecker[9] = {0};//this will check for repeated positions later
-	int position;
 	char choice = 'Y';
+	int o;
+	int x;
+	int t;
 
 	do{
 
@@ -29,27 +30,34 @@ int main()
 		while(game.game_over() == false)
 		{
 
-
-
-
-
+			cin >> game;
+			cout << game;
 			
 		}
+
+		manager.save_game(game);
+
+		manager.get_winner_total(o, x, t);
 		
 		if (game.get_winner() == "X" || game.get_winner() == "O") {
-			cout << "Congratulations, " << game.get_winner() << ", you won!" << endl;
+			cout << endl << "Congratulations, " << game.get_winner() << ", you won!" << endl;
 		}
 		else {
 			cout << "It's a tie!" << endl;
 		}
 
-		manager.save_game(game);
+		cout << endl << "Wins for X:  " << x << endl;
+		cout << "Wins for O:  " << o << endl;
+		cout << "Ties:  " << t << endl;
 
-		cout << "Would you like to play again? ";
+		cout << endl << "Would you like to play again? ";
 		cin >> choice;
 
 	} 
 	while (choice == 'Y' || choice == 'y');
+
+
+	cout << endl << "Game History: " << endl << manager << endl;
 	
 
 	return 0;
