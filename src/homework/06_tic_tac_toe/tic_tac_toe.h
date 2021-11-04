@@ -40,7 +40,7 @@ class Tic_tac_toe {
             return winner;
         }
 
-        friend ostream& operator<<(ostream& out, const Tic_tac_toe& game);
+        friend ostream& operator<<(ostream& out, Tic_tac_toe& game);
         friend istream& operator>>(istream& in, Tic_tac_toe& game);
 };
 

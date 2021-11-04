@@ -183,7 +183,7 @@ void Tic_tac_toe::set_winner()
     //if player is X set winner to O otherwise set winner to X
 }
 
-    ostream& operator<<(ostream& out, const Tic_tac_toe& game) {
+    ostream& operator<<(ostream& out, Tic_tac_toe& game) {
 
         string board;
 

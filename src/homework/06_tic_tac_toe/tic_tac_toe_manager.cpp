@@ -28,7 +28,7 @@ void Tic_tac_toe_manager::update_winner_count(string winner) {
     
 };
 
-ostream& operator<<(std::ostream& out, const Tic_tac_toe_manager& manager) {
+ostream& operator<<(std::ostream& out, Tic_tac_toe_manager& manager) {
 
     //Overload <<-Loop through vector of TicTacToe and call the TicTacToe cout overload.
     for (auto& game : manager.games) {

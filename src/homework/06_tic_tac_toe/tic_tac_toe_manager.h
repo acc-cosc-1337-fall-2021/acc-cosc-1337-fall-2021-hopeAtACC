@@ -25,7 +25,7 @@ class Tic_tac_toe_manager {
     public: 
 
         void save_game(Tic_tac_toe obj);
-        friend ostream& operator<<(std::ostream& out, const Tic_tac_toe_manager& manager);
+        friend ostream& operator<<(std::ostream& out, Tic_tac_toe_manager& manager);
         void get_winner_total(int& o, int& w, int& t);
 
 };
