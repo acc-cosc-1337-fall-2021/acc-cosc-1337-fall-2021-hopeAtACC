@@ -1,6 +1,6 @@
 #include "tic_tac_toe.h"
 
-using std::cout; using std::endl;
+using std::cout; using std::endl; 
 
 void Tic_tac_toe::set_next_player()
 {
@@ -183,7 +183,7 @@ void Tic_tac_toe::set_winner()
     //if player is X set winner to O otherwise set winner to X
 }
 
-    ostream& operator<<(ostream& out, Tic_tac_toe& game) {
+    ostream& operator<<(ostream& out, const Tic_tac_toe& game) {
 
         string board;
 
@@ -191,7 +191,7 @@ void Tic_tac_toe::set_winner()
             board += game.pegs[i] + "|" + game.pegs[i+1] + "|" + game.pegs[i+2] + "\n";
         }
 
-        out << board;
+        out << endl << board << endl;
 
         return out;
     };
