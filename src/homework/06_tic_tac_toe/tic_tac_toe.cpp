@@ -1,6 +1,6 @@
 #include "tic_tac_toe.h"
 
-using std::cout; using std::endl;
+using std::cout; using std::endl; 
 
 void Tic_tac_toe::set_next_player()
 {
@@ -31,10 +31,6 @@ bool Tic_tac_toe::game_over()
     }
 
     return check_board_full();
-    //check for row win, column win, or diagonal win using conditional structure
-    //if winner, call set winner function and return true
-    //check board full = true if no winner set winner variable to c and return true
-    //return false if no winner and board not full
 }
 
 void Tic_tac_toe::mark_board(int position)
@@ -42,15 +38,6 @@ void Tic_tac_toe::mark_board(int position)
     int w = position - 1;
     pegs[w] = player;
     set_next_player();
-}
-
-void Tic_tac_toe::display_board() const {
-
-    for (int i = 0; i <= 8; i += 3)
-    {
-        cout <<pegs[i]<<"|"<<pegs[i+1]<<"|"<<pegs[i+2] << endl;
-    }
-
 }
 
 bool Tic_tac_toe::check_board_full()
@@ -196,3 +183,37 @@ void Tic_tac_toe::set_winner()
     //if player is X set winner to O otherwise set winner to X
 }
 
+    ostream& operator<<(ostream& out, Tic_tac_toe& game) {
+
+        string board;
+
+        for (int i = 0; i <= 8; i += 3) {
+            board += game.pegs[i] + "|" + game.pegs[i+1] + "|" + game.pegs[i+2] + "\n";
+        }
+
+        out << endl << board << endl;
+
+        return out;
+    };
+    
+    istream& operator>>(istream& in, Tic_tac_toe& game) {
+
+        int position;
+
+		do {
+				cout << "Choose a board position from 1 - 9: ";
+				in >> position;
+
+		} while (position > 9 || position < 1);//keep asking user question if they don't provide an integer from 1-9
+
+
+		while (game.pegs[position - 1] != " ") {
+
+			cout << "That position has already been chosen.  Please pick a new one: ";
+			in >> position;
+		}
+
+        game.mark_board(position);
+
+        return in;
+    };
