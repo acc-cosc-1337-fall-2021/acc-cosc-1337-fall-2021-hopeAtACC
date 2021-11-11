@@ -1,9 +1,13 @@
 #include "Tic_tac_toe_manager.h"
+#include <memory>
+#include <iostream>
 
-void Tic_tac_toe_manager::save_game(Tic_tac_toe obj) {
+using std::move; using std::make_unique; using std::unique_ptr;
 
-    games.push_back(obj);
-    update_winner_count(obj.get_winner());
+void Tic_tac_toe_manager::save_game(unique_ptr<Tic_tac_toe>& obj) {
+    
+    update_winner_count(obj->get_winner());
+    games.push_back(move(obj));
 
 };
 
@@ -31,7 +35,7 @@ void Tic_tac_toe_manager::update_winner_count(string winner) {
 ostream& operator<<(std::ostream& out, Tic_tac_toe_manager& manager) {
 
     //Overload <<-Loop through vector of TicTacToe and call the TicTacToe cout overload.
-    for (auto& game : manager.games) {
+    for (const auto& game : manager.games) {
         
         out << game;
     }
