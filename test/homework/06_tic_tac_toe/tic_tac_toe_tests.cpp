@@ -563,16 +563,11 @@ TEST_CASE("Verify win from diagonally top right 4x4") {
 	object->mark_board(9);
 	REQUIRE(object->game_over() == false);
 	object->mark_board(13);
-	REQUIRE(object->game_over() == true);//fail1
+	REQUIRE(object->game_over() == true);
 
 	REQUIRE(object->get_winner() == "X");
 }
-/*
-1    2    3    4
-5    6    7    8
-9   10   11    12
-13  14   15    16
-*/
+
 TEST_CASE("Verify Tic_tac_toe game_over 4x4") {
 	std::unique_ptr<Tic_tac_toe> object = std::make_unique<Tic_tac_toe_4>();
 
@@ -627,7 +622,12 @@ TEST_CASE("Verify Tic_tac_toe_manager get_winner_total for tie 4x4") {
 	REQUIRE(x == 0);
 	REQUIRE(t == 1);
 }
-
+/*
+1    2    3    4
+5    6    7    8
+9   10   11    12
+13  14   15    16
+*/
 TEST_CASE("Verify Tic_tac_toe_manager get_winner_total for x 4x4") {
 	std::unique_ptr<Tic_tac_toe> object = std::make_unique<Tic_tac_toe_4>();
 
@@ -638,14 +638,14 @@ TEST_CASE("Verify Tic_tac_toe_manager get_winner_total for x 4x4") {
 	REQUIRE(object->game_over() == false);
 	object->mark_board(7);
 	REQUIRE(object->game_over() == false);
-	object->mark_board(4);
+	object->mark_board(3);
 	REQUIRE(object->game_over() == false);
-	object->mark_board(19);
+	object->mark_board(10);
 	REQUIRE(object->game_over() == false);
 	object->mark_board(9);
 	REQUIRE(object->game_over() == false);
 	object->mark_board(13);
-	REQUIRE(object->game_over() == true);//fail2
+	REQUIRE(object->game_over() == true);
 	REQUIRE(object->get_winner() == "X");
 	
 	Tic_tac_toe_manager manager;
@@ -673,14 +673,14 @@ TEST_CASE("Verify Tic_tac_toe_manager get_winner_total for o 4x4") {
 	REQUIRE(object->game_over() == false);
 	object->mark_board(7);
 	REQUIRE(object->game_over() == false);
-	object->mark_board(4);
+	object->mark_board(3);
 	REQUIRE(object->game_over() == false);
-	object->mark_board(19);
+	object->mark_board(10);
 	REQUIRE(object->game_over() == false);
 	object->mark_board(9);
 	REQUIRE(object->game_over() == false);
 	object->mark_board(13);
-	REQUIRE(object->game_over() == true);//fail3
+	REQUIRE(object->game_over() == true);
 	REQUIRE(object->get_winner() == "O");
 	
 	Tic_tac_toe_manager manager;
