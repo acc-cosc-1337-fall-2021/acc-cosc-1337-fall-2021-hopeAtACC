@@ -132,39 +132,4 @@ bool Tic_tac_toe_4::check_diagonal_win()
     }
     return false;
 }
-/*
-    ostream& operator<<(ostream& out, const unique_ptr<Tic_tac_toe>& game) {
 
-        string board;
-
-        for (int i = 0; i <= 15; i += 4) {
-            board += game->pegs[i] + "|" + game->pegs[i+1] + "|" + game->pegs[i+2] + "|" + game->pegs[i+3] + "\n";
-        }
-
-        out << endl << board << endl;
-
-        return out;
-    };
-    
-    istream& operator>>(istream& in, const unique_ptr<Tic_tac_toe>& game) {
-
-        int position;
-
-		do {
-				cout << "Choose a board position from 1 - 16: ";
-				in >> position;
-
-		} while (position > 16 || position < 1);//keep asking user question if they don't provide an integer from 1-16
-
-
-		while (game->pegs[position - 1] != " ") {
-
-			cout << "That position has already been chosen.  Please pick a new one: ";
-			in >> position;
-		}
-
-        game->mark_board(position);
-
-        return in;
-    };
-*/
