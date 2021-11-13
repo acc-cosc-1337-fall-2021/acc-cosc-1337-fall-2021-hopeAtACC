@@ -52,19 +52,12 @@ bool Tic_tac_toe::check_board_full()
             counter++;
         }
     }
-    if (counter == pegs.size() - 1) 
-    {
-        return true;
-    } 
-    else 
-    {
-        return false;
-    }
+    return counter == pegs.size() - 1;
 }
 
 void Tic_tac_toe::clear_board()
 {
-    for (int i = 0; i <= 8; i++)
+    for (int i = 0; i <= pegs.size() - 1; i++)
     {
         pegs[i] = " ";
     }
@@ -72,7 +65,7 @@ void Tic_tac_toe::clear_board()
 
 bool Tic_tac_toe::check_column_win()
 {
-    for (int i = 0; i<= 8; i++)
+    for (int i = 0; i<= pegs.size() - 1; i++)
     {
         if (pegs[0] == "X" && pegs[3] == "X" && pegs[6] == "X")
         {
@@ -105,7 +98,7 @@ bool Tic_tac_toe::check_column_win()
 
 bool Tic_tac_toe::check_row_win()
 {
-    for (int i = 0; i<= 8; i++)
+    for (int i = 0; i<= pegs.size() - 1; i++)
     {
         if (pegs[0] == "X" && pegs[1] == "X" && pegs[2] == "X")
         {
@@ -137,7 +130,7 @@ bool Tic_tac_toe::check_row_win()
 
 bool Tic_tac_toe::check_diagonal_win()
 {
-    for (int i = 0; i<= 8; i++)
+    for (int i = 0; i<= pegs.size() - 1; i++)
     {
         if (pegs[0] == "X" && pegs[4] == "X" && pegs[8] == "X")
         {
@@ -233,8 +226,6 @@ void Tic_tac_toe::set_winner()
             game->mark_board(position);
 
         }
-
-
 
         return in;
 };
