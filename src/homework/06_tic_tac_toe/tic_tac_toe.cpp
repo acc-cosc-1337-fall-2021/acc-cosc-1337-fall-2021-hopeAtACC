@@ -1,6 +1,7 @@
 #include "tic_tac_toe.h"
+#include <memory>
 
-using std::cout; using std::endl; 
+using std::cout; using std::endl; using std::unique_ptr;
 
 void Tic_tac_toe::set_next_player()
 {
@@ -16,9 +17,9 @@ void Tic_tac_toe::set_next_player()
 
 void Tic_tac_toe::start_game(string first_player)
 { 
-    winner = "C";   
+    winner = "C"; 
     clear_board();
-    player = first_player;    
+    player = first_player; 
 }
 
 bool Tic_tac_toe::game_over()
@@ -44,26 +45,19 @@ bool Tic_tac_toe::check_board_full()
 {
     int counter = 0;
 
-    for (int i = 0; i <= 8; i++)
+    for (int i = 0; i <= pegs.size() - 1; i++)
     {
         if (pegs[i] != " ")
         {
             counter++;
         }
     }
-    if (counter == 9) 
-    {
-        return true;
-    } 
-    else 
-    {
-        return false;
-    }
+    return counter == pegs.size() - 1;
 }
 
 void Tic_tac_toe::clear_board()
 {
-    for (int i = 0; i <= 8; i++)
+    for (int i = 0; i <= pegs.size() - 1; i++)
     {
         pegs[i] = " ";
     }
@@ -71,7 +65,7 @@ void Tic_tac_toe::clear_board()
 
 bool Tic_tac_toe::check_column_win()
 {
-    for (int i = 0; i<= 8; i++)
+    for (int i = 0; i<= pegs.size() - 1; i++)
     {
         if (pegs[0] == "X" && pegs[3] == "X" && pegs[6] == "X")
         {
@@ -97,17 +91,14 @@ bool Tic_tac_toe::check_column_win()
         {
             return true;
         }
-        else 
-        {
-            return false;
-        }
     }
-    //a column wins with marked values 1, 4, 7 or 2, 5, 8, or 3, 6, 9 with O's or X's
+
+    return false;
 }
 
 bool Tic_tac_toe::check_row_win()
 {
-    for (int i = 0; i<= 8; i++)
+    for (int i = 0; i<= pegs.size() - 1; i++)
     {
         if (pegs[0] == "X" && pegs[1] == "X" && pegs[2] == "X")
         {
@@ -133,17 +124,13 @@ bool Tic_tac_toe::check_row_win()
         {
             return true;
         }
-        else 
-        {
-            return false;
-        }
     }
-    //a row wins with marked values 1, 2, 3, or 4, 5, 6, or 7, 8, 9, with O'x or X's
+    return false;
 }
 
 bool Tic_tac_toe::check_diagonal_win()
 {
-    for (int i = 0; i<= 8; i++)
+    for (int i = 0; i<= pegs.size() - 1; i++)
     {
         if (pegs[0] == "X" && pegs[4] == "X" && pegs[8] == "X")
         {
@@ -161,14 +148,10 @@ bool Tic_tac_toe::check_diagonal_win()
         {
             return true;
         }
-        else 
-        {
-            return false;
-        }
     }
-    
-    //a diagonal wins with marked values 1, 5, 9 or 7, 5, 3, with all O's or X's
+    return false;
 }
+
 
 void Tic_tac_toe::set_winner()
 {
@@ -183,37 +166,66 @@ void Tic_tac_toe::set_winner()
     //if player is X set winner to O otherwise set winner to X
 }
 
-    ostream& operator<<(ostream& out, Tic_tac_toe& game) {
+    ostream& operator<<(ostream& out, const unique_ptr<Tic_tac_toe>& game) {
 
         string board;
 
-        for (int i = 0; i <= 8; i += 3) {
-            board += game.pegs[i] + "|" + game.pegs[i+1] + "|" + game.pegs[i+2] + "\n";
+        if (game->pegs.size() == 9) {
+            
+            for (int i = 0; i <= 8; i += 3) {
+            board += game->pegs[i] + "|" + game->pegs[i+1] + "|" + game->pegs[i+2] + "\n";
+            }
+
+        } else if (game ->pegs.size() == 16) {
+            for (int i = 0; i <= 15; i += 4) {
+            board += game->pegs[i] + "|" + game->pegs[i+1] + "|" + game->pegs[i+2] + "|" + game->pegs[i+3] + "\n";
         }
-
+    }
         out << endl << board << endl;
-
         return out;
-    };
+};
     
-    istream& operator>>(istream& in, Tic_tac_toe& game) {
+    istream& operator>>(istream& in, const unique_ptr<Tic_tac_toe>& game) {
 
         int position;
 
-		do {
-				cout << "Choose a board position from 1 - 9: ";
-				in >> position;
+        if (game->pegs.size() == 9) {
 
-		} while (position > 9 || position < 1);//keep asking user question if they don't provide an integer from 1-9
+            do {
+                    cout << "Choose a board position from 1 - 9: ";
+                    in >> position;
+
+            } while (position > 9 || position < 1);//keep asking user question if they don't provide an integer from 1-9
 
 
-		while (game.pegs[position - 1] != " ") {
+            while (game->pegs[position - 1] != " ") {
 
-			cout << "That position has already been chosen.  Please pick a new one: ";
-			in >> position;
-		}
+                cout << "That position has already been chosen.  Please pick a new one: ";
+                in >> position;
+            }
 
-        game.mark_board(position);
+            game->mark_board(position);
+
+        } else if (game->pegs.size() == 16) {
+            
+            int position;
+
+            do {
+                    cout << "Choose a board position from 1 - 16: ";
+                    in >> position;
+
+            } while (position > 16 || position < 1);//keep asking user question if they don't provide an integer from 1-9
+
+
+            while (game->pegs[position - 1] != " ") {
+
+                cout << "That position has already been chosen.  Please pick a new one: ";
+                in >> position;
+            }
+
+            game->mark_board(position);
+
+        }
 
         return in;
-    };
+};

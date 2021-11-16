@@ -1,31 +1,33 @@
-#ifndef tic_tac_toe.h
-#define tic_tac_toe.h
+#ifndef tic_tac_toe_h
+#define tic_tac_toe_h
 
 #include <iostream>
 #include <string>
 #include <vector>
+#include <memory>
 
-using std::string; using std::vector; using std::ostream; using std::istream;
+using std::string; using std::vector; using std::ostream; using std::istream; using std::unique_ptr;
 
 class Tic_tac_toe {
-    //private attributes
+
     private: 
 
         string player;
         string winner;
-        vector<string> pegs{" "," ", " ", " ", " ", " ", " ", " ", " "};
 
-        //private member functions
         void set_next_player();
         bool check_board_full();
         void clear_board();
-        bool check_column_win();
-        bool check_row_win();
-        bool check_diagonal_win();
         void set_winner();
     
+    protected: 
 
-    //public member functions
+        vector<string> pegs;
+        virtual bool check_column_win();
+        virtual bool check_row_win();
+        virtual bool check_diagonal_win();
+    
+
     public: 
 
         void start_game(string first_player);
@@ -39,9 +41,13 @@ class Tic_tac_toe {
         {
             return winner;
         }
+        //constructor
+        Tic_tac_toe() {};
 
-        friend ostream& operator<<(ostream& out, Tic_tac_toe& game);
-        friend istream& operator>>(istream& in, Tic_tac_toe& game);
+        Tic_tac_toe(int size) : pegs(size*size, " ") { };
+
+        friend ostream& operator<<(ostream& out, const unique_ptr<Tic_tac_toe>& game);
+        friend istream& operator>>(istream& in, const unique_ptr<Tic_tac_toe>& game);
 };
 
 #endif
