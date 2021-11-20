@@ -7,8 +7,8 @@ using std::cout; using std::cin; using std::vector; using std::endl; using std::
 
 int main() 
 {
-
-	Tic_tac_toe_manager manager;
+	Tic_tac_toe_data data;
+	Tic_tac_toe_manager manager(data);
 
 	string first_player;
 	char choice = 'Y';
