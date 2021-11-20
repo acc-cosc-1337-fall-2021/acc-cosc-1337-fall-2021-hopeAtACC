@@ -23,6 +23,11 @@ class Tic_tac_toe_4 : public Tic_tac_toe {
 
     }
 
+    //add a new constructor 
+    Tic_tac_toe_4(vector<string> p, string winner) : Tic_tac_toe(p, winner){
+    
+    }
+
 
 };
 
