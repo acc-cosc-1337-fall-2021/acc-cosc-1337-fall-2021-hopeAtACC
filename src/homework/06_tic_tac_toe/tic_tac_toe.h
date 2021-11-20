@@ -41,10 +41,21 @@ class Tic_tac_toe {
         {
             return winner;
         }
-        //constructor
+        //constructors
         Tic_tac_toe() {};
 
         Tic_tac_toe(int size) : pegs(size*size, " ") { };
+
+        //add class constructor, initialize the pegs vector with p and initialize winner
+        Tic_tac_toe(vector<string>& p, string& win) {
+            pegs = p;
+            winner = win;
+        }
+
+        //add const class function get_pegs that returns a vector of strings, return peg vector
+        const vector<string> get_pegs() {
+            return pegs;
+        }
 
         friend ostream& operator<<(ostream& out, const unique_ptr<Tic_tac_toe>& game);
         friend istream& operator>>(istream& in, const unique_ptr<Tic_tac_toe>& game);
