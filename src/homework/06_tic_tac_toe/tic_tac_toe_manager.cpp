@@ -4,6 +4,8 @@
 
 using std::move; using std::make_unique; using std::unique_ptr;
 
+    
+
 void Tic_tac_toe_manager::save_game(unique_ptr<Tic_tac_toe>& obj) {
     
     update_winner_count(obj->get_winner());
